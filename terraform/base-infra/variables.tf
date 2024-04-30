@@ -1,0 +1,64 @@
+
+
+variable "tenancy_id" {
+  description = "The tenancy id of the OCI Cloud Account in which to create the resources."
+  type        = string
+}
+
+variable "compartment_id" {
+  type        = string
+  description = "compartment ocid"
+}
+
+variable "ad_count" {
+  type        = number
+  default     = 1
+  description = "Number of ads"
+}
+
+variable "new_bits" {
+  type        = number
+  default     = 1
+  description = "CIDR newbits"
+}
+
+variable "ad_number" {
+  description = "the AD to place the operator host"
+  default     = 1
+  type        = number
+}
+
+variable "cls1_vcn_cidr" {
+  default     = "10.0.0.0/16"
+  type        = string
+  description = "CIDR Subnet to use for the VCN, will be split into multiple /24s for the required private and public subnets"
+}
+
+variable "cls2_vcn_cidr" {
+  default     = "190.0.0.0/16"
+  type        = string
+  description = "CIDR Subnet to use for the VCN, will be split into multiple /24s for the required private and public subnets"
+}
+
+variable "block_size" {
+  type    = number
+  default = 3
+}
+
+variable "tags" {
+  description = "Contains default tags for this project"
+  type        = map(string)
+  default     = {}
+}
+
+
+variable "region_1" {
+  type        = string
+  description = "The OCI region1"
+}
+
+variable "region_2" {
+  type        = string
+  description = "The OCI region2"
+}
+
