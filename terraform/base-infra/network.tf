@@ -8,6 +8,7 @@ module "cls1_vcn" {
   subnets                  = local.cls1_subnet_maps
   vcn_cidrs                = [var.cls1_vcn_cidr]
   vcn_name                 = var.cls1_vcn_name
+  region                   = var.region_1
   lockdown_default_seclist = false
 
   providers = {
@@ -27,6 +28,7 @@ module "cls2_vcn" {
   subnets                  = local.cls2_subnet_maps
   vcn_cidrs                = [var.cls2_vcn_cidr]
   vcn_name                 = var.cls2_vcn_name
+  region                   = var.region_2
   lockdown_default_seclist = false
 
   providers = {
