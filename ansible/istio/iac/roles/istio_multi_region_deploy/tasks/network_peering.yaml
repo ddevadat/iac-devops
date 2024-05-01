@@ -13,3 +13,15 @@
     peer_region_name: "{{cls1_region_1}}"
     config_profile_name: "REGION2"
     action: connect
+
+- name: Delete remote_peering_connection from cluster1 to cluster2
+  oci_network_remote_peering_connection:
+    remote_peering_connection_id: "{{cls1_rpc_id}}"
+    config_profile_name: "REGION1"
+    state: absent
+
+- name: Delete remote_peering_connection from cluster2 to cluster1
+  oci_network_remote_peering_connection:
+    remote_peering_connection_id: "{{cls2_rpc_id}}"
+    config_profile_name: "REGION2"
+    state: absent
