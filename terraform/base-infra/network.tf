@@ -28,6 +28,8 @@ module "cls1_vcn" {
   providers = {
     oci      = oci.region_1
   }
+
+  depends_on = [oci_core_drg.cls1_drg]
 }
 
 
@@ -48,4 +50,5 @@ module "cls2_vcn" {
   providers = {
     oci      = oci.region_2
   }
+  depends_on = [oci_core_drg.cls2_drg]
 }
