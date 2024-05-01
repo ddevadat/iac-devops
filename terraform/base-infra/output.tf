@@ -5,6 +5,8 @@ output "local_hosts_var_maps" {
     cls2_vcn_id                      = module.cls2_vcn.vcn_id
     cls1_rpc_id                      = oci_core_remote_peering_connection.cls1_remote_peering_connection.id
     cls2_rpc_id                      = oci_core_remote_peering_connection.cls2_remote_peering_connection.id
+    cls1_region_1                    = var.region_1
+    cls1_region_2                    = var.region_2
     dummy                            = "dummy"
   }
 }
