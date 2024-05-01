@@ -1,11 +1,11 @@
 - name: Connect a RPC from cluster1 to cluster2
-  oracle.oci.oci_remote_peering_connection:
+  oci_remote_peering_connection:
     remote_peering_connection_id: "{{cls2_rpc_id}}"
     peer_id: "{{cls1_rpc_id}}"
     peer_region_name: "{{cls1_region_1}}"
 
 - name: Connect a RPC from cluster2 to cluster1
-  oracle.oci.oci_remote_peering_connection:
+  oci_remote_peering_connection:
     remote_peering_connection_id: "{{cls1_rpc_id}}"
     peer_id: "{{cls2_rpc_id}}"
     peer_region_name: "{{cls2_region_1}}"
