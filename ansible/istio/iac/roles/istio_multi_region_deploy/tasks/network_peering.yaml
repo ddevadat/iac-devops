@@ -2,7 +2,7 @@
   oracle.oci.oci_network_remote_peering_connection_actions:
     remote_peering_connection_id: "{{cls2_rpc_id}}"
     peer_id: "{{cls1_rpc_id}}"
-    peer_region_name: "{{cls1_region_1}}"
+    peer_region_name: "{{cls2_region_2}}"
     config_profile_name: "REGION1"
     action: connect
 
