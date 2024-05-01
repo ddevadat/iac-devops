@@ -35,6 +35,19 @@ variable "cls2_vcn_cidr" {
   description = "CIDR Subnet to use for the VCN, will be split into multiple /24s for the required private and public subnets"
 }
 
+variable "cls1_vcn_name" {
+  default     = "cls1_vcn"
+  type        = string
+  description = "Cluster 1 VCN name"
+
+}
+
+variable "cls2_vcn_name" {
+  default     = "cls2_vcn"
+  type        = string
+  description = "Cluster 2 VCN name"
+
+}
 
 variable "tags" {
   description = "Contains default tags for this project"
