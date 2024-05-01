@@ -1,4 +1,4 @@
-output "hosts_var_maps" {
+output "local_hosts_var_maps" {
   value = {
     ansible_ssh_common_args          = "-o StrictHostKeyChecking=no"
     cls1_vcn_id                      = module.cls1_vcn.vcn_id
