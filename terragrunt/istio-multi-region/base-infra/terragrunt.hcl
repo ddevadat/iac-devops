@@ -18,14 +18,6 @@ terraform {
     }
   }
 }
-provider "oci" {
-  alias            = "region_1"
-  region           = "${local.env_vars.region_1}"
-}
-provider "oci" {
-  alias            = "region_2"
-  region           = "${local.env_vars.region_2}"
-}
 EOF
 }
 
