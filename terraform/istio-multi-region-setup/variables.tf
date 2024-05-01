@@ -1,5 +1,5 @@
 variable "ansible_collection_url" {
-  default = "git+https://github.com/ddevadat/iac-ansible-collection-roles.git#/sunbird_rc/iac"
+  default = "git+https://github.com/ddevadat/iac-devops.git#/ansible/istio/iac"
 }
 
 variable "ansible_collection_tag" {

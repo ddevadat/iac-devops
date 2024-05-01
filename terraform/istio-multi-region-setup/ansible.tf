@@ -11,22 +11,22 @@ resource "local_sensitive_file" "ansible_inventory" {
   file_permission = "0600"
 }
 
-# resource "null_resource" "run_ansible" {
-#   provisioner "local-exec" {
-#     command     = <<-EOT
-#           ansible-galaxy collection install ${var.ansible_collection_url},${var.ansible_collection_tag}
-#           ansible-playbook sunbird_rc.iac.sbrc_deploy -i ${local_sensitive_file.ansible_inventory.filename}
-#     EOT
-#     working_dir = path.module
-#   }
-#   triggers = {
-#     inventory_file_sha_hex = local_sensitive_file.ansible_inventory.id
-#     ansible_collection_tag = var.ansible_collection_tag
-#   }
-#   depends_on = [
-#     local_sensitive_file.ansible_inventory
-#   ]
-# }
+resource "null_resource" "run_ansible" {
+  provisioner "local-exec" {
+    command     = <<-EOT
+          ansible-galaxy collection install ${var.ansible_collection_url},${var.ansible_collection_tag}
+          ansible-playbook istio.iac.istio_multi_region_deploy -i ${local_sensitive_file.ansible_inventory.filename}
+    EOT
+    working_dir = path.module
+  }
+  triggers = {
+    inventory_file_sha_hex = local_sensitive_file.ansible_inventory.id
+    ansible_collection_tag = var.ansible_collection_tag
+  }
+  depends_on = [
+    local_sensitive_file.ansible_inventory
+  ]
+}
 
 
 # resource "null_resource" "run_ansible_undeploy" {
