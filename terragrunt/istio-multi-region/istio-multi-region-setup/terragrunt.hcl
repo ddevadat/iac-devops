@@ -12,10 +12,12 @@ dependency "istio_infra" {
 }
 
 inputs = {
-  local_hosts_var_maps         = dependency.istio_infra.outputs.local_hosts_var_maps
-  ansible_collection_tag       = local.env_vars.ansible_collection_tag
-  ansible_collection_url       = local.env_vars.ansible_collection_url
-  ansible_base_output_dir      = get_env("ANSIBLE_BASE_OUTPUT_DIR")
+  local_hosts_var_maps    = dependency.istio_infra.outputs.local_hosts_var_maps
+  region_1                = local.env_vars.region_1
+  region_2                = local.env_vars.region_2
+  ansible_collection_tag  = local.env_vars.ansible_collection_tag
+  ansible_collection_url  = local.env_vars.ansible_collection_url
+  ansible_base_output_dir = get_env("ANSIBLE_BASE_OUTPUT_DIR")
 }
 
 locals {

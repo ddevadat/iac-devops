@@ -2,8 +2,8 @@
 resource "local_sensitive_file" "ansible_inventory" {
   content = templatefile(
     "${path.module}/templates/inventory.yaml.tmpl",
-    { 
-      local_hosts_var_maps = merge(var.local_hosts_var_maps )
+    {
+      local_hosts_var_maps = merge(var.local_hosts_var_maps)
     }
 
   )
@@ -11,22 +11,27 @@ resource "local_sensitive_file" "ansible_inventory" {
   file_permission = "0600"
 }
 
-# resource "local_sensitive_file" "oci_cli_config" {
-#   content = templatefile(
-#     "${path.module}/templates/oci_cli_config.tmpl",
-#     { 
-#       local_hosts_var_maps = merge(var.local_hosts_var_maps )
-#     }
+resource "local_sensitive_file" "oci_cli_config" {
+  content = templatefile(
+    "${path.module}/templates/oci_cli_config.tmpl",
+    {
+      user_ocid    = var.user_ocid,
+      fingerprint  = var.fingerprint,
+      tenancy_ocid = var.tenancy_ocid,
+      region_1     = var.region_1,
+      region_2     = var.region_2
 
-#   )
-#   filename        = "~/.oci/config"
-#   file_permission = "0600"
-# }
+    }
+
+  )
+  filename        = pathexpand("~/.oci/config")
+  file_permission = "0600"
+}
 
 resource "local_sensitive_file" "oci_cli_key_file" {
   content = templatefile(
     "${path.module}/templates/oci_cli_key.tmpl",
-    { 
+    {
       private_key = var.private_key
     }
 

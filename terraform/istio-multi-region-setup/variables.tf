@@ -8,15 +8,40 @@ variable "ansible_collection_tag" {
 
 variable "ansible_base_output_dir" {
   description = "where to read/write ansible inv/etc"
-  default = "/iac-run-dir/output"
+  default     = "/iac-run-dir/output"
 }
 
 variable "local_hosts_var_maps" {
-  type = map
+  type        = map(any)
   description = "var map for local hosts"
 }
 
 variable "private_key" {
-  type = string
+  type        = string
   description = "oci api key"
+}
+
+variable "tenancy_ocid" {
+  type        = string
+  description = "oci tenancy id"
+}
+
+variable "user_ocid" {
+  type        = string
+  description = "oci user id"
+}
+
+variable "fingerprint" {
+  type        = string
+  description = "oci user fingerprint"
+}
+
+variable "region_1" {
+  type        = string
+  description = "The OCI region1"
+}
+
+variable "region_2" {
+  type        = string
+  description = "The OCI region2"
 }
