@@ -1,3 +1,17 @@
+resource "oci_core_drg" "cls1_drg" {
+    compartment_id = var.compartment_id
+    display_name = "cls1_drg"
+    provider = oci.region_1
+}
+
+
+resource "oci_core_drg" "cls2_drg" {
+    compartment_id = var.compartment_id
+    display_name = "cls2_drg"
+    provider = oci.region_2
+}
+
+
 module "cls1_vcn" {
   source                   = "oracle-terraform-modules/vcn/oci"
   version                  = "3.6.0"
@@ -9,6 +23,7 @@ module "cls1_vcn" {
   vcn_cidrs                = [var.cls1_vcn_cidr]
   vcn_name                 = var.cls1_vcn_name
   lockdown_default_seclist = false
+  attached_drg_id          = oci_core_drg.cls1_drg.id
 
   providers = {
     oci      = oci.region_1
@@ -28,6 +43,7 @@ module "cls2_vcn" {
   vcn_cidrs                = [var.cls2_vcn_cidr]
   vcn_name                 = var.cls2_vcn_name
   lockdown_default_seclist = false
+  attached_drg_id          = oci_core_drg.cls2_drg.id
 
   providers = {
     oci      = oci.region_2
