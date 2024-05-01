@@ -7,6 +7,7 @@ output "local_hosts_var_maps" {
     cls2_rpc_id                      = oci_core_remote_peering_connection.cls2_remote_peering_connection.id
     cls1_region_1                    = var.region_1
     cls1_region_2                    = var.region_2
+    compartment_id                   = var.compartment_id
     dummy                            = "dummy"
   }
 }
