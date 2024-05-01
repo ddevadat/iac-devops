@@ -16,11 +16,6 @@ variable "ad_count" {
   description = "Number of ads"
 }
 
-variable "new_bits" {
-  type        = number
-  default     = 1
-  description = "CIDR newbits"
-}
 
 variable "ad_number" {
   description = "the AD to place the operator host"
@@ -40,10 +35,6 @@ variable "cls2_vcn_cidr" {
   description = "CIDR Subnet to use for the VCN, will be split into multiple /24s for the required private and public subnets"
 }
 
-variable "block_size" {
-  type    = number
-  default = 3
-}
 
 variable "tags" {
   description = "Contains default tags for this project"
