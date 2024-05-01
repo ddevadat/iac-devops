@@ -11,11 +11,36 @@ resource "local_sensitive_file" "ansible_inventory" {
   file_permission = "0600"
 }
 
+# resource "local_sensitive_file" "oci_cli_config" {
+#   content = templatefile(
+#     "${path.module}/templates/oci_cli_config.tmpl",
+#     { 
+#       local_hosts_var_maps = merge(var.local_hosts_var_maps )
+#     }
+
+#   )
+#   filename        = "~/.oci/config"
+#   file_permission = "0600"
+# }
+
+resource "local_sensitive_file" "oci_cli_key_file" {
+  content = templatefile(
+    "${path.module}/templates/oci_cli_key.tmpl",
+    { 
+      local_hosts_var_maps = merge(var.local_hosts_var_maps )
+    }
+
+  )
+  filename        = "~/.oci/api.pem"
+  file_permission = "0600"
+}
+
+
 resource "null_resource" "run_ansible" {
   provisioner "local-exec" {
     command     = <<-EOT
           ansible-galaxy collection install ${var.ansible_collection_url},${var.ansible_collection_tag}
-          ansible-playbook istio.iac.istio_multi_region_deploy -i ${local_sensitive_file.ansible_inventory.filename}
+          # ansible-playbook istio.iac.istio_multi_region_deploy -i ${local_sensitive_file.ansible_inventory.filename}
     EOT
     working_dir = path.module
   }
