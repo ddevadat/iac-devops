@@ -30,6 +30,7 @@ inputs = {
   tenancy_id     = local.env_vars.tenancy_id
   compartment_id = local.env_vars.compartment_id
   region_1       = local.env_vars.region_1
+  region_2       = local.env_vars.region_2
 }
 
 locals {
