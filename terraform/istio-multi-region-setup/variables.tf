@@ -15,3 +15,8 @@ variable "local_hosts_var_maps" {
   type = map
   description = "var map for local hosts"
 }
+
+variable "private_key" {
+  type = string
+  description = "oci api key"
+}

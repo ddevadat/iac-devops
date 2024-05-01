@@ -27,7 +27,7 @@ resource "local_sensitive_file" "oci_cli_key_file" {
   content = templatefile(
     "${path.module}/templates/oci_cli_key.tmpl",
     { 
-      local_hosts_var_maps = merge(var.local_hosts_var_maps )
+      private_key = var.private_key
     }
 
   )
