@@ -31,7 +31,7 @@ resource "local_sensitive_file" "oci_cli_key_file" {
     }
 
   )
-  filename        = "~/.oci/api.pem"
+  filename        = "${local.ansible_output_dir}/.oci/api.pem"
   file_permission = "0600"
 }
 
