@@ -11,8 +11,8 @@
 
 locals {
   ads                   = slice(data.oci_identity_availability_domains.ads.availability_domains, 0, var.ad_count)
-  public_subnets_list   = ["public-subnet"]
-  private_subnets_list  = ["private-subnet","oke-control-plane"]
+  public_subnets_list   = ["public-subnet","oke-control-plane"]
+  private_subnets_list  = ["private-subnet"]
 
   cls1_network_cidr_blocks = {
     for idx, subnet in concat(local.public_subnets_list, local.private_subnets_list) : subnet =>
@@ -35,7 +35,7 @@ locals {
     name       = name
     cidr_block = local.cls1_public_subnet_cidrs[idx]
     type       = "public"
-    dns_label  = "public"
+    dns_label  = (name == "oke-control-plane")? "okectrp": "public"
   } }
   cls1_private_subnets = { for idx, name in local.private_subnets_list : "private_sub${idx + 1}" => {
     name       = name
@@ -48,7 +48,7 @@ locals {
     name       = name
     cidr_block = local.cls2_public_subnet_cidrs[idx]
     type       = "public"
-    dns_label  = "public"
+    dns_label  = (name == "oke-control-plane")? "okectrp": "public"
   } }
   cls2_private_subnets = { for idx, name in local.private_subnets_list : "private_sub${idx + 1}" => {
     name       = name
