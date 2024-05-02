@@ -29,7 +29,7 @@ EOF
 }
 
 dependency "base_infra" {
-  config_path = "../base-infra"
+  config_path = "../istio-multi-primary-same-region-base-infra"
   mock_outputs = {
     cls1_vcn_id                   = "null"
     cls2_vcn_id                   = "null"
