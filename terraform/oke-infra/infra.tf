@@ -7,8 +7,8 @@ module "oke_cluster1" {
   region                       = var.region_1
   create_vcn                   = "false"
   vcn_id                       = var.cls1_vcn_id
-  subnets                      = local.oke_subnets
-  pods_cidr                    = local.oke_pod_cidrs
+  subnets                      = local.cls1_oke_subnets
+  pods_cidr                    = local.cls1_oke_pod_cidrs
   cni_type                     = local.cni
   cluster_name                 = "oke_cluster1"
   create_cluster               = true
@@ -44,8 +44,8 @@ module "oke_cluster2" {
   region                       = var.region_1
   create_vcn                   = "false"
   vcn_id                       = var.cls2_vcn_id
-  subnets                      = local.oke_subnets
-  pods_cidr                    = local.oke_pod_cidrs
+  subnets                      = local.cls2_oke_subnets
+  pods_cidr                    = local.cls2_oke_pod_cidrs
   cni_type                     = local.cni
   cluster_name                 = "oke_cluster2"
   create_cluster               = true

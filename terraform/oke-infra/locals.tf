@@ -1,6 +1,7 @@
 locals {
-  oke_pod_cidrs     = (lookup(var.k8s_cluster_properties, "cni", "flannel") == "flannel") ? var.flannel_pods_cidr : var.base_infra_private_subnet_cidr_block
-  cp_allowed_cidrs  = ["${var.base_infra_private_subnet_cidr_block}", "${var.base_infra_public_subnet_cidr_block}"]
+  cls1_oke_pod_cidrs     = (lookup(var.k8s_cluster_properties, "cni", "flannel") == "flannel") ? var.flannel_pods_cidr : var.cls1_private_sub_1_cidr_block
+  cls2_oke_pod_cidrs     = (lookup(var.k8s_cluster_properties, "cni", "flannel") == "flannel") ? var.flannel_pods_cidr : var.cls2_private_sub_1_cidr_block
+  cp_allowed_cidrs  = ["0.0.0.0/0"]
   home_region       = lookup(data.oci_identity_regions.home_region.regions[0], "name")
 
 }
@@ -40,42 +41,83 @@ locals {
 
 
 locals {
-  oke_subnets = {
+  cls1_oke_subnets = {
     "bastion" = {
       "create" = "never"
-      "id"     = var.base_infra_private_subnet_id
-      "cidr"   = var.base_infra_private_subnet_cidr_block
+      "id"     = var.cls1_private_sub_1_id
+      "cidr"   = var.cls1_private_sub_1_cidr_block
     },
     "pub_lb" = {
       "create" = "never"
-      "id"     = var.base_infra_public_subnet_id
-      "cidr"   = var.base_infra_public_subnet_cidr_block
+      "id"     = var.cls1_public_sub_1_id
+      "cidr"   = var.cls1_public_sub_1_cidr_block
     },
     "cp" = {
       "create" = "never"
-      "id"     = var.base_infra_private_subnet_id
-      "cidr"   = var.base_infra_private_subnet_cidr_block
+      "id"     = var.cls1_public_sub_2_id
+      "cidr"   = var.cls1_public_sub_2_cidr_block
     },
     "int_lb" = {
       "create" = "never"
-      "id"     = var.base_infra_private_subnet_id
-      "cidr"   = var.base_infra_private_subnet_cidr_block
+      "id"     = var.cls1_public_sub_1_id
+      "cidr"   = var.cls1_public_sub_1_cidr_block
     },
     "operator" = {
       "create" = "never"
-      "id"     = var.base_infra_private_subnet_id
-      "cidr"   = var.base_infra_private_subnet_cidr_block
+      "id"     = var.cls1_private_sub_1_id
+      "cidr"   = var.cls1_private_sub_1_cidr_block
     },
     "pods" = {
       "create" = "never"
-      "id"     = var.base_infra_private_subnet_id
-      "cidr"   = var.base_infra_private_subnet_cidr_block
+      "id"     = var.cls1_private_sub_1_id
+      "cidr"   = var.cls1_private_sub_1_cidr_block
     },
     "workers" = {
       "create" = "never"
-      "id"     = var.base_infra_private_subnet_id
-      "cidr"   = var.base_infra_private_subnet_cidr_block
+      "id"     = var.cls1_private_sub_1_id
+      "cidr"   = var.cls1_private_sub_1_cidr_block
     }
   }
 }
 
+##
+
+locals {
+  cls2_oke_subnets = {
+    "bastion" = {
+      "create" = "never"
+      "id"     = var.cls2_private_sub_1_id
+      "cidr"   = var.cls2_private_sub_1_cidr_block
+    },
+    "pub_lb" = {
+      "create" = "never"
+      "id"     = var.cls2_public_sub_1_id
+      "cidr"   = var.cls2_public_sub_1_cidr_block
+    },
+    "cp" = {
+      "create" = "never"
+      "id"     = var.cls2_public_sub_2_id
+      "cidr"   = var.cls2_public_sub_2_cidr_block
+    },
+    "int_lb" = {
+      "create" = "never"
+      "id"     = var.cls2_public_sub_1_id
+      "cidr"   = var.cls2_public_sub_1_cidr_block
+    },
+    "operator" = {
+      "create" = "never"
+      "id"     = var.cls2_private_sub_1_id
+      "cidr"   = var.cls2_private_sub_1_cidr_block
+    },
+    "pods" = {
+      "create" = "never"
+      "id"     = var.cls2_private_sub_1_id
+      "cidr"   = var.cls2_private_sub_1_cidr_block
+    },
+    "workers" = {
+      "create" = "never"
+      "id"     = var.cls2_private_sub_1_id
+      "cidr"   = var.cls2_private_sub_1_cidr_block
+    }
+  }
+}

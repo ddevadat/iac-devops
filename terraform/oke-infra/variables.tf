@@ -77,16 +77,6 @@ variable "cls1_private_sub_1_cidr_block" {
 }
 
 
-variable "cls1_private_sub_2_id" {
-  description = "Base Infra private subnet id"
-  type        = string
-}
-
-variable "cls1_private_sub_2_cidr_block" {
-  description = "Base Infra private subnet cidr block"
-  type        = string
-}
-
 variable "cls1_public_sub_1_id" {
   description = "Base Infra public subnet id"
   type        = string
@@ -97,6 +87,50 @@ variable "cls1_public_sub_1_cidr_block" {
   type        = string
 }
 
+variable "cls1_public_sub_2_id" {
+  description = "Base Infra public subnet id"
+  type        = string
+}
+
+variable "cls1_public_sub_2_cidr_block" {
+  description = "Base Infra public subnet cidr block"
+  type        = string
+}
+
+###
+
+
+variable "cls2_private_sub_1_id" {
+  description = "Base Infra private subnet id"
+  type        = string
+}
+
+variable "cls2_private_sub_1_cidr_block" {
+  description = "Base Infra private subnet cidr block"
+  type        = string
+}
+
+
+variable "cls2_public_sub_1_id" {
+  description = "Base Infra public subnet id"
+  type        = string
+}
+
+variable "cls2_public_sub_1_cidr_block" {
+  description = "Base Infra public subnet cidr block"
+  type        = string
+}
+
+variable "cls2_public_sub_2_id" {
+  description = "Base Infra public subnet id"
+  type        = string
+}
+
+variable "cls2_public_sub_2_cidr_block" {
+  description = "Base Infra public subnet cidr block"
+  type        = string
+}
+##
 variable "k8s_allow_rules_public_lb" {
   default = {}
   type    = any
