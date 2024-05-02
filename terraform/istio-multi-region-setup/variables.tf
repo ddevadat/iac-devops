@@ -45,3 +45,13 @@ variable "region_2" {
   type        = string
   description = "The OCI region2"
 }
+
+variable "cls1_kubeconfig" {
+  type        = string
+  description = "The oke kubeconfig"
+}
+
+variable "cls2_kubeconfig" {
+  type        = string
+  description = "The oke kubeconfig"
+}

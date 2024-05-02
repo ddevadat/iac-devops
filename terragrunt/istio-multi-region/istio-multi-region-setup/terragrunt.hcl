@@ -6,6 +6,9 @@ dependency "istio_infra" {
   config_path = "../oke-infra"
   mock_outputs = {
     local_hosts_var_maps = {}
+    cls1_kubeconfig      = "null"
+    cls2_kubeconfig      = "null"
+
   }
   mock_outputs_allowed_terraform_commands = ["init", "validate", "plan", "show"]
   mock_outputs_merge_strategy_with_state  = "shallow"
@@ -13,6 +16,8 @@ dependency "istio_infra" {
 
 inputs = {
   local_hosts_var_maps    = dependency.istio_infra.outputs.local_hosts_var_maps
+  cls1_kubeconfig         = dependency.istio_infra.outputs.cls1_kubeconfig
+  cls2_kubeconfig         = dependency.istio_infra.outputs.cls2_kubeconfig
   region_1                = local.env_vars.region_1
   region_2                = local.env_vars.region_2
   ansible_collection_tag  = local.env_vars.ansible_collection_tag

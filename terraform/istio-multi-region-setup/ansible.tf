@@ -41,6 +41,31 @@ resource "local_sensitive_file" "oci_cli_key_file" {
 }
 
 
+resource "local_sensitive_file" "cls1_kubeconfig" {
+  content = templatefile(
+    "${path.module}/templates/cls1_kubeconfig.tmpl",
+    {
+      cls1_kubeconfig = var.cls1_kubeconfig
+    }
+
+  )
+  filename        = pathexpand("~/.kube/oke_cluster1")
+  file_permission = "0600"
+}
+
+
+resource "local_sensitive_file" "cls2_kubeconfig" {
+  content = templatefile(
+    "${path.module}/templates/cls2_kubeconfig.tmpl",
+    {
+      cls2_kubeconfig = var.cls2_kubeconfig
+    }
+
+  )
+  filename        = pathexpand("~/.kube/oke_cluster2")
+  file_permission = "0600"
+}
+
 resource "null_resource" "run_ansible" {
   provisioner "local-exec" {
     command     = <<-EOT
