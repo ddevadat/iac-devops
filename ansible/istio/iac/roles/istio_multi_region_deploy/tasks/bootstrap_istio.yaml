@@ -3,3 +3,11 @@
     src: "bootstrap_istio.sh.j2"
     dest: "{{scripts_location}}/bootstrap_scripts.sh"
     mode: "0700"
+
+- name: Execute bootstrap scripts 
+  shell: "{{scripts_location}}/bootstrap_scripts.sh"
+  register: bootstrap_result
+
+- name: Show bootstrap execution result 
+  debug: 
+    msg: "{{bootstrap_result.stdout}}"
