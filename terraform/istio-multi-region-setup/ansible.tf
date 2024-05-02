@@ -79,7 +79,11 @@ resource "null_resource" "run_ansible" {
     ansible_collection_tag = var.ansible_collection_tag
   }
   depends_on = [
-    local_sensitive_file.ansible_inventory
+    local_sensitive_file.ansible_inventory,
+    local_sensitive_file.oci_cli_config,
+    local_sensitive_file.oci_cli_key_file,
+    local_sensitive_file.cls1_kubeconfig,
+    local_sensitive_file.cls2_kubeconfig
   ]
 }
 
@@ -100,7 +104,11 @@ resource "null_resource" "run_ansible_undeploy" {
 
   }
   depends_on = [
-    local_sensitive_file.ansible_inventory
+    local_sensitive_file.ansible_inventory,
+    local_sensitive_file.oci_cli_config,
+    local_sensitive_file.oci_cli_key_file,
+    local_sensitive_file.cls1_kubeconfig,
+    local_sensitive_file.cls2_kubeconfig
   ]
 }
 
