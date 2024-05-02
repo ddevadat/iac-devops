@@ -54,8 +54,7 @@ module "cls1_vcn" {
   vcn_cidrs                = [var.cls1_vcn_cidr]
   vcn_name                 = var.cls1_vcn_name
   lockdown_default_seclist = false
-  attached_drg_id          = oci_core_drg.cls1_drg.id
-
+  nat_gateway_route_rules  = local.cls1_nat_gateway_route_rules
   providers = {
     oci      = oci.region_1
   }
@@ -74,7 +73,7 @@ module "cls2_vcn" {
   vcn_cidrs                = [var.cls2_vcn_cidr]
   vcn_name                 = var.cls2_vcn_name
   lockdown_default_seclist = false
-  attached_drg_id          = oci_core_drg.cls1_drg.id
+  nat_gateway_route_rules  = local.cls2_nat_gateway_route_rules
   providers = {
     oci      = oci.region_2
   }
