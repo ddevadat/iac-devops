@@ -8,7 +8,7 @@ output "local_hosts_var_maps" {
     cls1_region_1                    = var.region_1
     cls2_region_2                    = var.region_2
     compartment_id                   = var.compartment_id
-    dummy                            = "dummy"
+    dummy                            = "dummy1"
   }
 }
 

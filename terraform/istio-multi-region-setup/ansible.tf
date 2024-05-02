@@ -3,7 +3,7 @@ resource "local_sensitive_file" "ansible_inventory" {
   content = templatefile(
     "${path.module}/templates/inventory.yaml.tmpl",
     {
-      local_hosts_var_maps = merge(var.local_hosts_var_maps)
+      local_hosts_var_maps = merge(var.local_hosts_var_maps,local.local_scripts_location_map)
     }
 
   )
