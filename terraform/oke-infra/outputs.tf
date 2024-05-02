@@ -13,9 +13,9 @@ output "local_hosts_var_maps" {
 }
 
 output "cls1_kubeconfig" {
-  value = module.oke_cluster1.cluster_kubeconfig
+  value = yamlencode(module.oke_cluster1.cluster_kubeconfig)
 }
 
 output "cls2_kubeconfig" {
-  value = module.oke_cluster2.cluster_kubeconfig
+  value = yamlencode(module.oke_cluster2.cluster_kubeconfig)
 }
