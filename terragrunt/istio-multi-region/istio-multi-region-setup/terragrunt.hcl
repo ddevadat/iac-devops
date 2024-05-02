@@ -1,5 +1,5 @@
 terraform {
-  source = "git::${get_env("IAC_TERRAFORM_MODULES_REPO")}//terraform/istio-multi-region-setup?ref=${get_env("IAC_TERRAFORM_MODULES_TAG")}"
+  source = "git::${get_env("IAC_TERRAFORM_MODULES_REPO")}//terraform/istio-multi-region/istio-multi-region-setup?ref=${get_env("IAC_TERRAFORM_MODULES_TAG")}"
 }
 
 dependency "istio_infra" {
