@@ -33,8 +33,6 @@ dependency "base_infra" {
   mock_outputs = {
     cls1_vcn_id                   = "null"
     cls2_vcn_id                   = "null"
-    cls1_rpc_id                   = "null"
-    cls2_rpc_id                   = "null"
     cls1_private_sub_1_id         = "null"
     cls1_public_sub_1_id          = "null"
     cls1_public_sub_2_id          = "null"
@@ -59,8 +57,6 @@ inputs = {
   cls2_vcn_cidr                 = dependency.base_infra.outputs.cls2_vcn_cidr
   cls1_vcn_id                   = dependency.base_infra.outputs.cls1_vcn_id
   cls2_vcn_id                   = dependency.base_infra.outputs.cls2_vcn_id
-  cls1_rpc_id                   = dependency.base_infra.outputs.cls1_rpc_id
-  cls2_rpc_id                   = dependency.base_infra.outputs.cls2_rpc_id
   cls1_private_sub_1_id         = dependency.base_infra.outputs.cls1_private_sub_1_id
   cls1_public_sub_1_id          = dependency.base_infra.outputs.cls1_public_sub_1_id
   cls1_public_sub_2_id          = dependency.base_infra.outputs.cls1_public_sub_2_id
