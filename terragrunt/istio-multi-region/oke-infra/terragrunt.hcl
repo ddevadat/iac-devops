@@ -47,12 +47,16 @@ dependency "base_infra" {
     cls2_private_sub_1_cidr_block = "null"
     cls2_public_sub_1_cidr_block  = "null"
     cls2_public_sub_2_cidr_block  = "null"
+    cls1_vcn_cidr                 = "null"
+    cls2_vcn_cidr                 = "null"
   }
   mock_outputs_allowed_terraform_commands = ["init", "validate", "plan", "show"]
   mock_outputs_merge_strategy_with_state  = "shallow"
 }
 
 inputs = {
+  cls1_vcn_cidr                 = dependency.base_infra.outputs.cls1_vcn_cidr
+  cls2_vcn_cidr                 = dependency.base_infra.outputs.cls2_vcn_cidr
   cls1_vcn_id                   = dependency.base_infra.outputs.cls1_vcn_id
   cls2_vcn_id                   = dependency.base_infra.outputs.cls2_vcn_id
   cls1_rpc_id                   = dependency.base_infra.outputs.cls1_rpc_id

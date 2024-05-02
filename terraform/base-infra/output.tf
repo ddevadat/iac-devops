@@ -6,6 +6,13 @@ output "cls2_vcn_id" {
   value = module.cls2_vcn.vcn_id
 }
 
+output "cls1_vcn_cidr" {
+  value = var.cls1_vcn_cidr
+}
+
+output "cls2_vcn_cidr" {
+  value = var.cls2_vcn_cidr
+}
 
 output "cls1_rpc_id" {
   value = oci_core_remote_peering_connection.cls1_remote_peering_connection.id

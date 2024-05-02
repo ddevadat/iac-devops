@@ -1,8 +1,8 @@
 locals {
-  cls1_oke_pod_cidrs     = (lookup(var.k8s_cluster_properties, "cni", "flannel") == "flannel") ? var.flannel_pods_cidr : var.cls1_private_sub_1_cidr_block
-  cls2_oke_pod_cidrs     = (lookup(var.k8s_cluster_properties, "cni", "flannel") == "flannel") ? var.flannel_pods_cidr : var.cls2_private_sub_1_cidr_block
-  cp_allowed_cidrs  = ["0.0.0.0/0"]
-  home_region       = lookup(data.oci_identity_regions.home_region.regions[0], "name")
+  cls1_oke_pod_cidrs = (lookup(var.k8s_cluster_properties, "cni", "flannel") == "flannel") ? var.flannel_pods_cidr : var.cls1_private_sub_1_cidr_block
+  cls2_oke_pod_cidrs = (lookup(var.k8s_cluster_properties, "cni", "flannel") == "flannel") ? var.flannel_pods_cidr : var.cls2_private_sub_1_cidr_block
+  cp_allowed_cidrs   = ["0.0.0.0/0"]
+  home_region        = lookup(data.oci_identity_regions.home_region.regions[0], "name")
 
 }
 
