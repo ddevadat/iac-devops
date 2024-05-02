@@ -31,3 +31,36 @@ For OCI cloud provider
     docker build -t control-center-iac-devops .
 
 ```
+
+## Start the container
+
+```
+docker run -d --name <container_name> control-center-iac-devops sh -c 'while true; do echo "Running"; sleep 360000; done'
+
+```
+
+## Login to the container & set the env variables
+
+```
+docker exec -it <container_name> /bin/bash
+
+cd /iac-run-dir
+modify environment variables in setenv as appropriate
+
+source setenv
+./init.sh
+cd /iac-run-dir/iac-devops/terragrunt
+modify environment.yaml file as appropriate
+
+e.g
+
+region_1: "ap-osaka-1"
+region_2: "ap-tokyo-1"
+ansible_collection_tag: "main"
+ansible_collection_url: "git+https://github.com/ddevadat/iac-devops.git#/ansible/istio/iac"
+home_region: "us-ashburn-1"
+tenancy_id: "ocid1.tenancy.oc1..aaaaaaaa"
+compartment_id: "ocid1.compartment.oc1..aaaaaaaa"
+ad_count: 1
+
+```
