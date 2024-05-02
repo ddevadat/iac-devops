@@ -55,6 +55,7 @@ module "cls1_vcn" {
   vcn_name                 = var.cls1_vcn_name
   lockdown_default_seclist = false
   nat_gateway_route_rules  = local.cls1_nat_gateway_route_rules
+  attached_drg_id          = oci_core_drg.cls1_drg.id
   providers = {
     oci = oci.region_1
   }
