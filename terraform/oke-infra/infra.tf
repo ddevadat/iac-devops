@@ -27,6 +27,7 @@ module "oke_cluster1" {
   allow_worker_ssh_access      = true
   state_id                     = "cluster1"
   allow_rules_public_lb        = var.k8s_allow_rules_public_lb
+  output_detail                = true
 
   providers = {
     oci      = oci.region_1
@@ -64,6 +65,7 @@ module "oke_cluster2" {
   allow_worker_ssh_access      = true
   state_id                     = "cluster2"
   allow_rules_public_lb        = var.k8s_allow_rules_public_lb
+  output_detail                = true
 
   providers = {
     oci      = oci.region_2

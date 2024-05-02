@@ -12,10 +12,6 @@ output "local_hosts_var_maps" {
   }
 }
 
-output "dummy" {
-  value = "dummy value"
-}
-
 output "cls1_kubeconfig" {
   value = module.oke_cluster1.cluster_kubeconfig
 }
