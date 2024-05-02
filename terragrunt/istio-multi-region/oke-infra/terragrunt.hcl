@@ -45,6 +45,9 @@ inputs = {
   cls2_public_sub_2_cidr_block  = dependency.base_infra.outputs.cls2_public_sub_2_cidr_block
   region_1                      = local.env_vars.region_1
   region_2                      = local.env_vars.region_2
+  ad_count                      = local.env_vars.ad_count
+  tenancy_id                    = local.env_vars.tenancy_id
+  compartment_id                = local.env_vars.compartment_id
 }
 
 locals {

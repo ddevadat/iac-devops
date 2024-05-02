@@ -13,3 +13,4 @@ data "oci_identity_regions" "home_region" {
 data "oci_containerengine_cluster_option" "oke" {
   cluster_option_id = "all"
 }
+
