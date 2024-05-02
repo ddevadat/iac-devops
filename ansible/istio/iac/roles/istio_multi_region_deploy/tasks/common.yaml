@@ -47,7 +47,7 @@
 
 - name: Install istioctl
   shell: |
-    export ISTIO_VERSION=1.21.0
+    export ISTIO_VERSION={{istio_version}}
     curl -L https://istio.io/downloadIstio > /root/istio_install.sh
     chmod +x /root/istio_install.sh
     cd /root
