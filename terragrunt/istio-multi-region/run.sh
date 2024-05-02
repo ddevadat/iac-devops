@@ -3,6 +3,11 @@ cd base-infra
 rm -rf .terragrunt-cache
 terragrunt apply -auto-approve --terragrunt-non-interactive
 
+terragrunt run-all init
+cd ../oke-infra
+rm -rf .terragrunt-cache
+terragrunt apply -auto-approve --terragrunt-non-interactive
+
 cd ../istio-multi-region-setup
 rm -rf .terragrunt-cache
 terragrunt apply -auto-approve --terragrunt-non-interactive
