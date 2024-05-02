@@ -1,9 +1,9 @@
 - name: Upload bootstrap scripts 
   template:
     src: "bootstrap_istio.sh.j2"
-    dest: "{{playbook_dir}}/bootstrap_scripts.sh"
+    dest: "{{inventory_dir}}/bootstrap_scripts.sh"
     mode: "0700"
 
 - name: debug 
   debug: 
-    msg: "{{playbook_dir}}"
+    msg: "{{inventory_dir}}"
