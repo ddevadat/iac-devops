@@ -1,4 +1,4 @@
 - hosts: localhost
   become: true
   roles:
-    - istio.iac.istio_multi_region_deploy
+    - istio.iac.istio_multi_region_undeploy

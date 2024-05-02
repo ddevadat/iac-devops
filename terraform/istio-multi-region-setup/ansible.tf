@@ -84,23 +84,23 @@ resource "null_resource" "run_ansible" {
 }
 
 
-# resource "null_resource" "run_ansible_undeploy" {
-#   provisioner "local-exec" {
-#     when        = destroy
-#     command     = <<-EOT
-#           echo "Run ansible playbook for Sunbird-RC undeploy"
-#           ansible-playbook sunbird_rc.iac.sbrc_undeploy -i ${self.triggers.inventory_file_name}
-#     EOT
-#     working_dir = path.module
-#   }
-#   triggers = {
-#     ansible_collection_url = var.ansible_collection_url
-#     ansible_collection_tag = var.ansible_collection_tag
-#     inventory_file_name    = local_sensitive_file.ansible_inventory.filename
+resource "null_resource" "run_ansible_undeploy" {
+  provisioner "local-exec" {
+    when        = destroy
+    command     = <<-EOT
+          ansible-galaxy collection install ${self.triggers.ansible_collection_url},${self.triggers.ansible_collection_tag}
+          ansible-playbook istio.iac.istio_multi_region_undeploy -i ${self.triggers.inventory_file_name}
+    EOT
+    working_dir = path.module
+  }
+  triggers = {
+    ansible_collection_url = var.ansible_collection_url
+    ansible_collection_tag = var.ansible_collection_tag
+    inventory_file_name    = local_sensitive_file.ansible_inventory.filename
 
-#   }
-#   depends_on = [
-#     local_sensitive_file.ansible_inventory
-#   ]
-# }
+  }
+  depends_on = [
+    local_sensitive_file.ansible_inventory
+  ]
+}
 
