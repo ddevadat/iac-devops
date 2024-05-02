@@ -3,3 +3,4 @@
 # - include_tasks: network_peering.yaml
 # - include_tasks: bootstrap_istio.yaml
 - include_tasks: install_istio.yaml
+- include_tasks: deploy_sample_app.yaml
