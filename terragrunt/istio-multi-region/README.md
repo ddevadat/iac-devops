@@ -49,7 +49,7 @@ modify environment variables in setenv as appropriate
 
 source setenv
 ./init.sh
-cd /iac-run-dir/iac-devops/terragrunt
+cd /iac-run-dir/iac-devops/terragrunt/istio-multi-region
 modify environment.yaml file as appropriate
 
 e.g
@@ -62,5 +62,31 @@ home_region: "us-ashburn-1"
 tenancy_id: "ocid1.tenancy.oc1..aaaaaaaa"
 compartment_id: "ocid1.compartment.oc1..aaaaaaaa"
 ad_count: 1
+
+```
+
+## Build infrastructure
+
+This IaC uses opentofu and terragrunt for managing the project hierarchy. Entire provsioning roughly takes about 1 hr.
+
+```
+docker exec -it <container_name> /bin/bash
+cd /iac-run-dir
+source setenv
+cd /iac-run-dir/iac-devops/terragrunt/istio-multi-region
+./run.sh
+
+```
+
+## Cleanup infrastructure
+
+Before running cleanup make sure you are disconnected from wireguard vpn
+
+```
+docker exec -it <container_name> /bin/bash
+cd /iac-run-dir
+source setenv
+cd /iac-run-dir/iac-devops/terragrunt/istio-multi-region
+./deleteAll.sh
 
 ```

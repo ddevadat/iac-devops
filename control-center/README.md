@@ -60,7 +60,7 @@ modify environment variables in setenv as appropriate
 
 source setenv
 ./init.sh
-cd /iac-run-dir/iac-devops/terragrunt
+cd /iac-run-dir/iac-devops/terragrunt/istio-multi-region
 modify environment.yaml file as appropriate
 
 ```
@@ -73,10 +73,8 @@ This IaC uses opentofu and terragrunt for managing the project hierarchy. Entire
 docker exec -it <container_name> /bin/bash
 cd /iac-run-dir
 source setenv
-cd /iac-run-dir/terraform-experimental/terraform/openg2p/init
-terragrunt run-all init
-terragrunt run-all plan
-terragrunt run-all apply
+cd /iac-run-dir/iac-devops/terragrunt/istio-multi-region
+./run.sh
 
 ```
 
@@ -89,7 +87,7 @@ Before running cleanup make sure you are disconnected from wireguard vpn
 docker exec -it <container_name> /bin/bash
 cd /iac-run-dir
 source setenv
-cd /iac-run-dir/terraform-experimental/terraform/openg2p/init
-terragrunt run-all destroy --terragrunt-non-interactive
+cd /iac-run-dir/iac-devops/terragrunt/istio-multi-region
+./deleteAll.sh
 
 ```
