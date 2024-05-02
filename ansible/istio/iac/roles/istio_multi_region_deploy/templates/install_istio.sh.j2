@@ -63,7 +63,7 @@ CTX_CLUSTER1=oke_cluster1
 CTX_CLUSTER2=oke_cluster2
 
 echo -e "\n\e[0;32m${bold}Configuring Istio ${ISTIO_VERSION}.. ${normal}"
-export KUBECONFIG="~/.kube/config"
+export KUBECONFIG="/root/.kube/config"
 export PATH="${ISTIO_INSTALL_LOCATION}/istio-${ISTIO_VERSION}/bin:$PATH"
 configure_istio_multiprimary cluster1 $CTX_CLUSTER1
 configure_istio_multiprimary cluster2 $CTX_CLUSTER2
