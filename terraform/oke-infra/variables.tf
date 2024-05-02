@@ -68,7 +68,7 @@ variable "k8s_cluster_properties" {
     boot_volume_size        = 50
     node_pool_size          = 3
     worker_image_os_version = 7.9
-    cni : "flannel"
+    cni : "npn"
   }
   description = "Default oke properties"
   type        = map(any)
