@@ -11,3 +11,12 @@ output "local_hosts_var_maps" {
     dummy                            = "dummy"
   }
 }
+
+
+output "cls1_vcn_id" {
+  value = module.cls1_vcn.vcn_id
+}
+
+output "cls2_vcn_id" {
+  value = module.cls2_vcn.vcn_id
+}
