@@ -78,6 +78,50 @@ cd /iac-run-dir/iac-devops/terragrunt/istio-multi-region
 
 ```
 
+
+## Verifying Cross-Cluster Traffic
+
+To verify that cross-cluster load balancing works as expected, call the HelloWorld service several times using the Sleep pod. To ensure load balancing is working properly, call the HelloWorld service from all clusters in your deployment.
+
+Send one request from the Sleep pod on cluster1 to the HelloWorld service:
+
+```
+
+export KUBECONFIG=/root/.kube/config
+kubectl exec --context="${CTX_CLUSTER1}" -n sample -c sleep \
+    "$(kubectl get pod --context="${CTX_CLUSTER1}" -n sample -l \
+    app=sleep -o jsonpath='{.items[0].metadata.name}')" \
+    -- curl -sS helloworld.sample:5000/hello
+
+```
+Repeat this request several times and verify that the HelloWorld version should toggle between v1 and v2:
+
+```
+Hello version: v2, instance: helloworld-v2-758dd55874-6x4t8
+Hello version: v1, instance: helloworld-v1-86f77cd7bd-cpxhv
+...
+
+```
+
+Now repeat this process from the Sleep pod on cluster2
+
+```
+kubectl exec --context="${CTX_CLUSTER2}" -n sample -c sleep \
+    "$(kubectl get pod --context="${CTX_CLUSTER2}" -n sample -l \
+    app=sleep -o jsonpath='{.items[0].metadata.name}')" \
+    -- curl -sS helloworld.sample:5000/hello
+
+```
+
+Repeat this request several times and verify that the HelloWorld version should toggle between v1 and v2:
+
+```
+Hello version: v2, instance: helloworld-v2-758dd55874-6x4t8
+Hello version: v1, instance: helloworld-v1-86f77cd7bd-cpxhv
+...
+
+```
+
 ## Cleanup infrastructure
 
 Before running cleanup make sure you are disconnected from wireguard vpn
