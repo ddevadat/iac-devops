@@ -5,7 +5,7 @@
     mode: "0700"
 
 - name: Execute istio install scripts
-  ansible.builtin.shell: install_istio.sh > istio_install.log
+  ansible.builtin.shell: "{{scripts_location}}/install_istio.sh > istio_install.log"
   args:
     chdir: "{{scripts_location}}/"
     creates: istio_install.log
