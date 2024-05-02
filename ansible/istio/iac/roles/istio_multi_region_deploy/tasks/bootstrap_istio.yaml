@@ -1,9 +1,9 @@
 # - name: Upload bootstrap scripts 
 #   template:
 #     src: "bootstrap_istio.sh.j2"
-#     dest: "{{inventory_dir}}/bootstrap_scripts.sh"
+#     dest: "{{scripts_location}}/bootstrap_scripts.sh"
 #     mode: "0700"
 
 - name: debug 
   debug: 
-    msg: "{{inventory_dir}}"
+    msg: "{{scripts_location}}"
