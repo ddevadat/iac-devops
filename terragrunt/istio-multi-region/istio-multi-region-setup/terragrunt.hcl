@@ -3,7 +3,7 @@ terraform {
 }
 
 dependency "istio_infra" {
-  config_path = "../base-infra"
+  config_path = "../oke-infra"
   mock_outputs = {
     local_hosts_var_maps = {}
   }

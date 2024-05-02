@@ -32,6 +32,16 @@ variable "cls2_vcn_id" {
   description = "VCN id for creating oke"
 }
 
+variable "cls1_rpc_id" {
+  type        = string
+  description = "RPC id for VCN"
+}
+
+variable "cls2_rpc_id" {
+  type        = string
+  description = "RPC id for VCN"
+}
+
 variable "ad_count" {
   type        = number
   default     = 1
