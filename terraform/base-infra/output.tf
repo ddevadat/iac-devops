@@ -22,10 +22,10 @@ output "cls2_vcn_id" {
 }
 
 
-output "cls1_subnet_id" {
-  value = module.cls1_vcn.subnet_id
-}
+# output "cls1_subnet_id" {
+#   value = module.cls1_vcn.subnet_id
+# }
 
-output "cls1_subnet_all_attributes" {
-  value = module.cls1_vcn.subnet_all_attributes
+output "cls1_private_sub_1_id" {
+  value = module.cls1_vcn.subnet_all_attributes.private_sub1.id
 }
