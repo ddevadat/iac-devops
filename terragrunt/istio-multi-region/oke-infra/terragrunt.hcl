@@ -79,6 +79,9 @@ inputs = {
 locals {
   env_vars = yamldecode(
   file("${find_in_parent_folders("environment.yaml")}"))
+  cloud_platform_vars = yamldecode(
+    file("${find_in_parent_folders("${get_env("CONTROL_CENTER_CLOUD_PROVIDER")}-vars.yaml")}")
+  )
 }
 
 include "root" {
