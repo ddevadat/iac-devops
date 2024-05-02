@@ -22,15 +22,14 @@ variable "tags" {
   default     = {}
 }
 
-variable "vcn_id" {
+variable "cls1_vcn_id" {
   type        = string
   description = "VCN id for creating oke"
 }
 
-variable "vcn_cidr" {
-  default     = "10.0.0.0/16"
+variable "cls2_vcn_id" {
   type        = string
-  description = "CIDR Subnet to use for the VPC"
+  description = "VCN id for creating oke"
 }
 
 variable "ad_count" {
@@ -67,23 +66,34 @@ variable "k8s_cluster_properties" {
 
 
 
-variable "base_infra_private_subnet_id" {
+variable "cls1_private_sub_1_id" {
   description = "Base Infra private subnet id"
   type        = string
 }
 
-variable "base_infra_private_subnet_cidr_block" {
+variable "cls1_private_sub_1_cidr_block" {
   description = "Base Infra private subnet cidr block"
   type        = string
 }
 
-variable "base_infra_public_subnet_id" {
+
+variable "cls1_private_sub_2_id" {
   description = "Base Infra private subnet id"
   type        = string
 }
 
-variable "base_infra_public_subnet_cidr_block" {
+variable "cls1_private_sub_2_cidr_block" {
   description = "Base Infra private subnet cidr block"
+  type        = string
+}
+
+variable "cls1_public_sub_1_id" {
+  description = "Base Infra public subnet id"
+  type        = string
+}
+
+variable "cls1_public_sub_1_cidr_block" {
+  description = "Base Infra public subnet cidr block"
   type        = string
 }
 
