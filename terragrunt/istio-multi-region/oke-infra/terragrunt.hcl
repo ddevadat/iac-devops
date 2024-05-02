@@ -2,6 +2,32 @@ terraform {
   source = "git::${get_env("IAC_TERRAFORM_MODULES_REPO")}//terraform/oke-infra?ref=${get_env("IAC_TERRAFORM_MODULES_TAG")}"
 }
 
+generate "required_providers_override" {
+  path = "required_providers_override.tf"
+
+  if_exists = "overwrite_terragrunt"
+
+  contents = <<EOF
+terraform { 
+  
+  required_providers {
+    oci = {
+      source  = "oracle/oci"
+      version = "${local.cloud_platform_vars.oci_provider_version}"
+    }
+  }
+}
+provider "oci" {
+  alias            = "region_1"
+  region           = "${local.env_vars.region_1}"
+}
+provider "oci" {
+  alias            = "region_2"
+  region           = "${local.env_vars.region_2}"
+}
+EOF
+}
+
 dependency "base_infra" {
   config_path = "../base-infra"
   mock_outputs = {
