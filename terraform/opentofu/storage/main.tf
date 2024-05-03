@@ -13,3 +13,13 @@ variable "namespace" {
   type        = string
   description = "oci namespace"
 }
+
+variable "region_1" {
+  type        = string
+  description = "The OCI region1"
+}
+
+variable "region_2" {
+  type        = string
+  description = "The OCI region2"
+}
