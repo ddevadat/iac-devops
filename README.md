@@ -9,3 +9,9 @@ This repository contains [Istio](https://istio.io/) implementation in Oracle Clo
 ### [Install Multi-Primary on different networks](/terragrunt/istio-multi-region/)
 
 Sample implementation of installing Istio in Multi-Primary on different networks across two regions.
+
+
+### [Install Multi-Primary on same networks](/terragrunt/istio-multi-primary-same-region/)
+
+Sample implementation of installing Istio in Multi-Primary on same network.
+
