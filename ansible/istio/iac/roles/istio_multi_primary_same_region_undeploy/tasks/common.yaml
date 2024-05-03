@@ -1,0 +1,8 @@
+- name: Remove progress files
+  file:
+    path: "{{item}}"
+    state: absent
+  with_items:
+    - "{{scripts_location}}/istio_install.log"
+    - "{{scripts_location}}/deploy_sample_application.log"
+    - /root/.kube/config

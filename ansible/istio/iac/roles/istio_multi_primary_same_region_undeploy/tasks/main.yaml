@@ -1,0 +1,3 @@
+- include_tasks: uninstall_istio.yaml
+- include_tasks: network_unpeering.yaml
+- include_tasks: common.yaml

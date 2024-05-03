@@ -1,0 +1,18 @@
+- name: Upload istio install scripts 
+  template:
+    src: "install_istio.sh.j2"
+    dest: "{{scripts_location}}/install_istio.sh"
+    mode: "0700"
+
+- name: Upload eastwest gw script
+  copy:
+    src: gen-eastwest-gateway.sh
+    dest: "{{scripts_location}}/gen-eastwest-gateway.sh"
+    mode: "0700"
+
+
+- name: Execute istio install scripts
+  ansible.builtin.shell: "{{scripts_location}}/install_istio.sh > istio_install.log"
+  args:
+    chdir: "{{scripts_location}}/"
+    creates: istio_install.log

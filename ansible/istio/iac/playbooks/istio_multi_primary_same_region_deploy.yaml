@@ -1,0 +1,4 @@
+- hosts: localhost
+  become: true
+  roles:
+    - istio.iac.istio_multi_primary_same_region_deploy

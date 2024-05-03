@@ -1,0 +1,61 @@
+- name: Install Pip3
+  apt:
+    name: python3-pip
+    update_cache: yes
+
+- name: Install postgres lib
+  package:
+    name:
+      - libpq-dev
+      - postgresql
+
+
+- name: Install kubernetes pre requisites
+  pip:
+    name: 
+      - kubernetes
+      - psycopg2
+
+- name: Install oci sdk
+  pip:
+    name: 
+      - pyOpenSSL
+      - oci
+
+- name: Remove OpenSSL python packages
+  shell: |
+    rm -R /usr/lib/python3/dist-packages/OpenSSL
+    pip3 install pyOpenSSL --upgrade
+
+- name: Install kubectl
+  shell: |
+    curl -o /usr/local/bin/kubectl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+    chmod +x /usr/local/bin/kubectl
+
+- name: Install helm
+  shell: curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+
+- name: Install kubectx
+  shell: |
+    wget -q https://github.com/ahmetb/kubectx/releases/download/v0.9.5/kubectx -O /usr/local/bin/kubectx
+    chmod +x /usr/local/bin/kubectx
+
+- name: Install kubens
+  shell: |
+    wget -q https://github.com/ahmetb/kubectx/releases/download/v0.9.5/kubens -O /usr/local/bin/kubens
+    chmod +x /usr/local/bin/kubens
+
+- name: Install istioctl
+  shell: |
+    export ISTIO_VERSION={{istio_version}}
+    curl -L https://istio.io/downloadIstio > /root/istio_install.sh
+    chmod +x /root/istio_install.sh
+    cd /root
+    ./istio_install.sh
+    rm /root/istio_install.sh
+
+- name: Merge Kubeconfig
+  shell: |
+    cd ~/.kube/
+    KUBECONFIG=./oke_cluster1:./oke_cluster2 kubectl config view --flatten > ./config
+

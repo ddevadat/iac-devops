@@ -1,0 +1,27 @@
+- name: Connect a RPC from cluster1 to cluster2
+  oracle.oci.oci_network_remote_peering_connection_actions:
+    remote_peering_connection_id: "{{cls1_rpc_id}}"
+    peer_id: "{{cls2_rpc_id}}"
+    peer_region_name: "{{cls2_region_2}}"
+    config_profile_name: "REGION1"
+    action: connect
+
+- name: Connect a RPC from cluster2 to cluster1
+  oracle.oci.oci_network_remote_peering_connection_actions:
+    remote_peering_connection_id: "{{cls2_rpc_id}}"
+    peer_id: "{{cls1_rpc_id}}"
+    peer_region_name: "{{cls1_region_1}}"
+    config_profile_name: "REGION2"
+    action: connect
+
+# - name: Delete remote_peering_connection from cluster1 to cluster2
+#   oracle.oci.oci_network_remote_peering_connection:
+#     remote_peering_connection_id: "{{cls1_rpc_id}}"
+#     config_profile_name: "REGION1"
+#     state: absent
+
+# - name: Delete remote_peering_connection from cluster2 to cluster1
+#   oracle.oci.oci_network_remote_peering_connection:
+#     remote_peering_connection_id: "{{cls2_rpc_id}}"
+#     config_profile_name: "REGION2"
+#     state: absent

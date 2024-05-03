@@ -1,0 +1,6 @@
+all: 
+  localhost: 
+  vars:
+    %{~ for varmapkey, varmapval in local_hosts_var_maps ~}
+    ${varmapkey}: '${varmapval}'
+    %{~ endfor ~}

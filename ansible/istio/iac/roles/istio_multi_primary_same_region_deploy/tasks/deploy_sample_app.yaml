@@ -1,0 +1,12 @@
+- name: Upload sample app deploy scripts 
+  template:
+    src: "deploy_sample_application.sh.j2"
+    dest: "{{scripts_location}}/deploy_sample_application.sh"
+    mode: "0700"
+
+
+- name: Execute sample app deploy scripts
+  ansible.builtin.shell: "{{scripts_location}}/deploy_sample_application.sh > deploy_sample_application.log"
+  args:
+    chdir: "{{scripts_location}}/"
+    creates: deploy_sample_application.log
