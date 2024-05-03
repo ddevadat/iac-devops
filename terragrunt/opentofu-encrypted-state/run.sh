@@ -1,4 +1,4 @@
 terragrunt run-all init
-cd base-infra
+cd opentofu-storage
 rm -rf .terragrunt-cache
 terragrunt apply -auto-approve --terragrunt-non-interactive
