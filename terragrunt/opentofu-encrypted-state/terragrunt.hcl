@@ -52,6 +52,29 @@ terraform {
       version = "${local.common_vars.local_provider_version}"
     }
   }
+  encryption {
+    key_provider "pbkdf2" "pbkdf2" {
+      passphrase = "${local.env_vars.state_enc_passphrase}"
+    }
+
+    method "aes_gcm" "method_aes_gcm" {
+      # Method options here
+      keys = key_provider.pbkdf2.pbkdf2
+    }
+
+    state {
+      # Encryption/decryption for state data
+      method = method.aes_gcm.method_aes_gcm
+      enforced = true
+    }
+
+    plan {
+      # Encryption/decryption for plan data
+      method = method.aes_gcm.method_aes_gcm
+      enforced = true
+    }
+
+  }
 }
 EOF
 }
