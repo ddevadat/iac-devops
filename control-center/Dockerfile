@@ -1,6 +1,6 @@
 FROM ubuntu:20.04
 ARG TERRAGRUNT_VERSION=0.55.19
-ARG OPENTOFU_VERSION=1.6.2
+ARG OPENTOFU_VERSION=1.7.0
 
 # Update apt and Install dependencies
 RUN apt-get update && apt install software-properties-common -y && add-apt-repository ppa:rmescandon/yq -y && apt update && DEBIAN_FRONTEND=noninteractive TZ=Etc/UTC apt-get install -y \
